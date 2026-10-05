@@ -24,3 +24,6 @@ Semantic Versioning after the first release.
 - Architecture Decision Record for the initial HTTP implementation.
 - Continuous Integration workflow with GitHub Actions.
 - Automated formatting, vet, test, race detection, and build checks.
+- Makefile with standardized development and quality commands.
+- Local quality gate for formatting, static analysis, tests, race detection, and build validation.
+- Project tooling documentation.

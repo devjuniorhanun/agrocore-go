@@ -47,6 +47,7 @@ technical or business requirement.
 
 - Go 1.27 or newer
 - Git
+- GNU Make 4+
 
 Check the installed Go version:
 
@@ -126,22 +127,34 @@ for configuration details.
 
 ## Development
 
-AgroCore uses Git Flow.
+AgroCore provides a Makefile for common development tasks.
 
-Permanent branches:
+List the available commands:
 
-- `main` — production-ready code.
-- `develop` — integration branch for ongoing development.
+```bash
+make help
+```
 
-Supporting branches:
+Run the complete quality gate:
 
-- `feature/*`
-- `bugfix/*`
-- `release/*`
-- `hotfix/*`
+```bash
+make check
+```
 
-Development workflow details are documented in
-[`docs/development/git-workflow.md`](docs/development/git-workflow.md).
+Build the application:
+
+```bash
+make build
+```
+
+Run the application:
+
+```bash
+make run
+```
+
+For additional information, see
+[`docs/development/project-tooling.md`](docs/development/project-tooling.md).
 
 ## Documentation
 
@@ -152,6 +165,7 @@ Project documentation is maintained alongside the source code.
 - [`docs/development/`](docs/development/) — development workflows and conventions.
 - [`docs/architecture/http-server.md`](docs/architecture/http-server.md) — HTTP server architecture.
 - [`docs/development/continuous-integration.md`](docs/development/continuous-integration.md) — Continuous Integration workflow.
+- [`docs/development/project-tooling.md`](docs/development/project-tooling.md) — Local development and quality tooling.
 
 ## Architecture Decisions
 
@@ -173,6 +187,7 @@ Current ADRs:
 - [x] Establish project documentation
 - [ ] Add automated quality checks
 - [x] Add continuous integration
+- [x] Development tooling
 
 ### Backend
 
