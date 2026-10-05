@@ -185,7 +185,7 @@ Current ADRs:
 - [x] Initialize Go module
 - [x] Configure Git Flow
 - [x] Establish project documentation
-- [ ] Add automated quality checks
+- [x] Add automated quality checks
 - [x] Add continuous integration
 - [x] Development tooling
 
