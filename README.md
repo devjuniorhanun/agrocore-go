@@ -151,6 +151,7 @@ Project documentation is maintained alongside the source code.
 - [`docs/decisions/`](docs/decisions/) — Architecture Decision Records (ADRs).
 - [`docs/development/`](docs/development/) — development workflows and conventions.
 - [`docs/architecture/http-server.md`](docs/architecture/http-server.md) — HTTP server architecture.
+- [`docs/development/continuous-integration.md`](docs/development/continuous-integration.md) — Continuous Integration workflow.
 
 ## Architecture Decisions
 
@@ -171,7 +172,7 @@ Current ADRs:
 - [x] Configure Git Flow
 - [x] Establish project documentation
 - [ ] Add automated quality checks
-- [ ] Add continuous integration
+- [x] Add continuous integration
 
 ### Backend
 
