@@ -10,8 +10,11 @@ testability, documentation, and explicit architectural decisions.
 
 > Early development.
 
-The project is currently in its bootstrap phase. Features described in the
-roadmap are planned capabilities and should not be considered implemented
+AgroCore currently provides its initial HTTP foundation, including
+environment-based configuration, health checking, server timeouts,
+graceful shutdown, and automated tests.
+
+Features described in the roadmap should not be considered implemented
 until they are marked as completed.
 
 ## Goals
@@ -26,8 +29,14 @@ use cases.
 ## Current Technology Stack
 
 - Go 1.27+
+- Go Standard Library (`net/http`)
 - Git
 - Git Flow
+
+No third-party runtime dependencies are currently required.
+
+Additional technologies will be introduced only when they solve a concrete
+technical or business requirement.
 
 Additional technologies will be introduced only when they solve a concrete
 technical or business requirement.
@@ -67,17 +76,53 @@ Expected output:
 AgroCore API
 ```
 
-### Build
+## HTTP API
+
+Start the application:
 
 ```bash
-go build -o agrocore .
+go run .
 ```
 
-Run the compiled binary:
+By default, AgroCore listens on port `8080`.
+
+### Health Check
+
+```http
+GET /health
+```
+
+Example:
 
 ```bash
-./agrocore
+curl http://localhost:8080/health
 ```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+### Configuration
+
+The HTTP server can be configured through environment variables.
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `HTTP_HOST` | empty | HTTP interface/address to bind to |
+| `HTTP_PORT` | `8080` | HTTP server port |
+
+Example:
+
+```bash
+HTTP_PORT=9000 go run .
+```
+
+See [`docs/development/configuration.md`](docs/development/configuration.md)
+for configuration details.
 
 ## Development
 
@@ -105,6 +150,7 @@ Project documentation is maintained alongside the source code.
 - [`docs/architecture/`](docs/architecture/) — architecture documentation.
 - [`docs/decisions/`](docs/decisions/) — Architecture Decision Records (ADRs).
 - [`docs/development/`](docs/development/) — development workflows and conventions.
+- [`docs/architecture/http-server.md`](docs/architecture/http-server.md) — HTTP server architecture.
 
 ## Architecture Decisions
 
@@ -115,6 +161,7 @@ Current ADRs:
 
 - [ADR 0001 — Use Go as the Backend Language](docs/decisions/0001-use-go.md)
 - [ADR 0002 — Use Git Flow as the Branching Strategy](docs/decisions/0002-use-git-flow.md)
+- [ADR 0003 — Use the Go Standard Library for the Initial HTTP Server](docs/decisions/0003-use-standard-library-http.md)
 
 ## Roadmap
 
@@ -128,7 +175,10 @@ Current ADRs:
 
 ### Backend
 
-- [ ] HTTP server
+- [x] HTTP server
+- [x] Health check endpoint
+- [x] Environment-based HTTP configuration
+- [x] Graceful shutdown
 - [ ] REST API
 - [ ] Domain modeling
 - [ ] PostgreSQL persistence

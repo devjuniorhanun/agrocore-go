@@ -14,3 +14,11 @@ Semantic Versioning after the first release.
 - Git Flow branching strategy.
 - Initial project documentation.
 - Architecture Decision Records for Go and Git Flow.
+- HTTP server based on the Go standard library.
+- Health check endpoint at `GET /health`.
+- HTTP server timeout configuration.
+- Graceful shutdown on `SIGINT` and `SIGTERM`.
+- Environment-based HTTP server configuration.
+- Validation for HTTP server port configuration.
+- Automated tests for configuration, HTTP handlers, routing, and server setup.
+- Architecture Decision Record for the initial HTTP implementation.
