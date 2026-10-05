@@ -1,0 +1,29 @@
+# Build artifacts
+/agrocore
+/agrocore-go
+/bin/
+/dist/
+
+# Test artifacts
+*.test
+*.out
+coverage.*
+
+# Environment variables and local configuration
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
