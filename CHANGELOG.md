@@ -22,3 +22,5 @@ Semantic Versioning after the first release.
 - Validation for HTTP server port configuration.
 - Automated tests for configuration, HTTP handlers, routing, and server setup.
 - Architecture Decision Record for the initial HTTP implementation.
+- Continuous Integration workflow with GitHub Actions.
+- Automated formatting, vet, test, race detection, and build checks.
