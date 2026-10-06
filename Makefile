@@ -1,3 +1,4 @@
+GO_FILES := $(shell find . -type f -name '*.go' -not -path './vendor/*')
 APP_NAME := agrocore
 BUILD_DIR := bin
 BINARY := $(BUILD_DIR)/$(APP_NAME)
@@ -18,14 +19,18 @@ help:
 	@echo "  make clean       Remove generated build artifacts"
 	@echo "  make check       Run all quality checks"
 
+
+
 fmt:
-	gofmt -w .
+	gofmt -w $(GO_FILES)
 
 fmt-check:
-	@test -z "$$(gofmt -l .)" || \
-		(echo "The following files are not formatted:"; \
-		gofmt -l .; \
-		exit 1)
+	@files="$$(gofmt -l $(GO_FILES))"; \
+	if [ -n "$$files" ]; then \
+		echo "The following files are not formatted:"; \
+		echo "$$files"; \
+		exit 1; \
+	fi
 
 vet:
 	go vet ./...
