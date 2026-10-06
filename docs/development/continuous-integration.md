@@ -21,27 +21,39 @@ The workflow runs for:
 
 ## Quality Checks
 
-The CI pipeline performs the following checks:
+The CI pipeline executes the project's standard quality gate:
+
+```bash
+make check
+```
+
+The quality gate validates:
 
 1. source code formatting;
 2. `go vet`;
 3. automated tests;
-4. Go race detector;
+4. the Go race detector;
 5. application build.
+
+Using the same quality gate locally and in CI reduces differences between
+developer environments and automated validation.
 
 ## Local Validation
 
-Developers should run the equivalent checks before pushing changes:
+Before pushing changes, developers should run:
 
 ```bash
-gofmt -w .
-go vet ./...
-go test -count=1 ./...
-go test -race -count=1 ./...
-go build ./...
+make check
 ```
 
-CI is not a replacement for local validation.
+Formatting can be fixed automatically with:
+
+```bash
+make fmt
+```
+
+CI validates the project but does not modify incorrectly formatted source
+code.
 
 ## Dependencies
 
